@@ -14,13 +14,8 @@ import { formSchema } from "./constants";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
-import {
-  ChatCompletionChunk,
-  ChatCompletionMessage,
-} from "openai/resources/chat/index.mjs";
 import Empty from "@/components/empty";
 import Loader from "@/components/loader";
-import { cn } from "@/lib/utils";
 
 function MusicPage() {
   const [music, setMusic] = useState<string>();
@@ -101,9 +96,13 @@ function MusicPage() {
           {!music && !isLoading && (
             <Empty label="No Music Generated" />
           )}
-          <div>
-            Music will be generated here
-          </div>
+          {
+            music && (
+              <audio controls className="w-full mt-8">
+                <source src={music}/>
+              </audio>
+            )
+          }
         </div>
       </div>
     </div>
