@@ -17,7 +17,7 @@ const DashboardLayout =  async ({children}:{
             
         </div>
         <main className='md:pl-72 '>
-                <Navbar/>
+                <Navbar apiLimitCount = {apiLimitCount}/>
                 {children}
             </main>
     </div>
